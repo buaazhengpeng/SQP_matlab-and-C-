@@ -1,0 +1,37 @@
+# Project: ÏîÄ¿1
+# Makefile created by Dev-C++ 5.10
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = Array.o main.o problem.o QuadProg.o
+LINKOBJ  = Array.o main.o problem.o QuadProg.o
+LIBS     = -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib32" -L"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -L"D:/Anaconda3/Lib" -L"D:/Anaconda3/pkgs/python-3.5.5-1/Lib" -static-libstdc++ -static-libgcc -m32
+INCS     = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"D:/Anaconda3/include" -I"D:/Anaconda3/pkgs/python-3.5.5-1/include"
+CXXINCS  = -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"D:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++" -I"D:/Anaconda3/include" -I"D:/Anaconda3/pkgs/python-3.5.5-1/include"
+BIN      = SQPdemo.exe
+CXXFLAGS = $(CXXINCS) -m32 -lgsl -lgslcblas
+CFLAGS   = $(INCS) -m32 -lgsl -lgslcblas
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+Array.o: Array.cpp
+	$(CPP) -c Array.cpp -o Array.o $(CXXFLAGS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+problem.o: problem.cpp
+	$(CPP) -c problem.cpp -o problem.o $(CXXFLAGS)
+
+QuadProg.o: QuadProg.cpp
+	$(CPP) -c QuadProg.cpp -o QuadProg.o $(CXXFLAGS)
